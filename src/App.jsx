@@ -30,6 +30,15 @@ export default function App(){
     setTasks(updateArr)
   }
 
+  function handleDown(index){
+    const updateArr = [...tasks]
+    const temp = updateArr[index]
+    updateArr[index] = updateArr[index + 1]
+    updateArr[index + 1] = temp
+
+    setTasks(updateArr)
+  }
+
     console.log(tasks)
   return(
     <>
@@ -41,7 +50,7 @@ export default function App(){
          <button onClick={() => handleRemove(index)}
           className='text-red-600'>remove</button>
           <button onClick={() => handleUpp(index)} className='text-blue-600'>Up</button>
-          <button className='text-blue-600'>Down</button>
+          <button onClick={() => handleDown(index)} className='text-blue-600'>Down</button>
           </li>)}
     </ul>
     </>
