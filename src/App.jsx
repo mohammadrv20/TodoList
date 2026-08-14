@@ -8,10 +8,16 @@ export default function App(){
   
   function handleChange(event){
     setTask(event.target.value)
+    
   }
   
   function handleClick(){
     setTasks([...tasks , task])
+    setTask("")
+  }
+
+  function handleRemove(index){
+    setTasks(tasks.filter((_ , indexToRemove ) => index !== indexToRemove))
   }
 
   return(
@@ -20,7 +26,7 @@ export default function App(){
     <input type="text" placeholder="Type the Task here ..." onChange={handleChange} value={task} />
     <button onClick={handleClick}>Add</button>
     <ul >
-      {tasks.map((task , index) => <li key={index}>{task}</li>)}
+      {tasks.map((task , index) => <li key={index}>{task} <button onClick={() => handleRemove(index)} className='text-red-600'>remove</button></li>)}
     </ul>
     </>
   )
