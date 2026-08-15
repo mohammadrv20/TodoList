@@ -22,6 +22,8 @@ export default function App(){
 
   function handleUpp(index){
 
+    if(index === 0 ) return;
+
     const updateArr = [...tasks]
     const temp = updateArr[index]
     updateArr[index] = updateArr[index - 1]
@@ -31,6 +33,9 @@ export default function App(){
   }
 
   function handleDown(index){
+
+    if(index ===tasks.length - 1) return;
+    
     const updateArr = [...tasks]
     const temp = updateArr[index]
     updateArr[index] = updateArr[index + 1]
